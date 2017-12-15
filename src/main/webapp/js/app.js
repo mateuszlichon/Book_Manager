@@ -36,7 +36,7 @@ $(function () {
 
   function renderList() {
     $.getJSON({
-      url: baseUrl + 'books'
+      url: baseUrl + 'books/'
     }).done(function (data) {
      console.log(data);
       list.empty();

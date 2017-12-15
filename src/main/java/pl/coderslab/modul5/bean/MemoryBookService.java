@@ -8,6 +8,15 @@ import org.springframework.stereotype.Component;
 @Component
 public class MemoryBookService {
 	List<Book> list;
+	Long bookId = 11l;
+
+	public Long getBookId() {
+		return bookId;
+	}
+
+	public void setBookId(Long bookId) {
+		this.bookId = bookId;
+	}
 
 	public MemoryBookService() {
 		list = new ArrayList<>();
@@ -24,5 +33,33 @@ public class MemoryBookService {
 
 	public void setList(List<Book> list) {
 		this.list = list;
+	}
+	
+	public Book serchById(long id) {
+		List<Book> list = this.list;
+		for(Book b : list) {
+			if (b.getId()==id) {
+				return b;
+			}
+		}
+		return null;
+	}
+	
+	public void addBook(long id, String isbn, String title, String author, String publisher, String type) {
+		Book b = new Book(id, isbn, title, author, publisher, type);
+		this.list.add(b);
+	}
+
+	public void addBook(Book b) {
+		this.list.add(b);
+	}
+	
+	public void delById(long id) {
+		List<Book> list = this.list;
+		for(Book b : list) {
+			if (b.getId()==id) {
+			list.remove(b);
+			}
+		}
 	}
 }
